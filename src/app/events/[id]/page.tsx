@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { dbGetEventById } from "@/db/functions/eventsList";
 
 
 export const metadata: Metadata = {
@@ -8,10 +9,12 @@ export const metadata: Metadata = {
 };
 
 
-export default function SingleEvent({ params }: { params: { id: string } }) {
+export default async function SingleEvent({ params }: { params: { id: number } }) {
+    const event = await dbGetEventById(params.id)
+    
     return (
-        <div>
-            <p>{params.id}</p>
+        <div className="mt-2">
+            <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
         </div>
     );
 };

@@ -9,11 +9,11 @@ export function NavLinks() {
     
     return (
         <nav>
-            <Link className={`link ${pathname === '/' ? 'active': ''}`} href='/'>
+            <Link className={`link ${pathname === '/' ? 'active': ''} me-2`} href='/'>
                 Home
             </Link>
 
-            <Link className={`link ${pathname === '/events' ? 'active': ''}`} href='/events'>
+            <Link className={`link ${pathname === '/events' ? 'active': ''} me-2`} href='/events'>
                 Events
             </Link>
         </nav>

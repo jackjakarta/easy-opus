@@ -9,4 +9,4 @@ export const events = pgTable('events', {
 });
 
 
-// export const 
+export type EventRow = typeof events.$inferSelect;
