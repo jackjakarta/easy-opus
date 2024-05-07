@@ -1,7 +1,14 @@
+import { NavLinks } from "./ui/nav-links";
+import './globals.css';
+
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavLinks />
+        <main>{children}</main>
+      </body>
     </html>
   );
-}
+};
