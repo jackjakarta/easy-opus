@@ -13,7 +13,7 @@ export default async function Events() {
 
     if (!eventsQs) {
         return (
-            <div className="border border-blue-500 size-32 p-2">
+            <div>
                 <h1 className="text-3xl font-bold font-mono mt-2">Events</h1>
                 <p>No events found.</p>
             </div>

@@ -13,5 +13,9 @@ export async function dbGetEventsList(): Promise<EventRow[]> {
 export async function dbGetEventById(eventId: number): Promise<EventRow> {
     const event = (await db.select().from(events).where(eq(events.id, eventId)))[0];
 
+    if (event === undefined) {
+        throw Error(`No Event with ID: ${eventId}`)
+    }
+
     return event;
 };
