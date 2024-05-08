@@ -29,7 +29,7 @@ export default async function Events() {
                     <li key={event.id}> <Link href={`/events/${event.id}`}>{event.name}</Link> - {event.description}</li>
                 ))}
             </ul>
-            <Link href={'events/add'}>Add New Event</Link>
+            <Link href={'/events/add'}>Add New Event</Link>
         </div>
     );
 };

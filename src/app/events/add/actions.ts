@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { dbAddNewEvent } from "@/db/functions/eventsList";
 
@@ -13,4 +13,4 @@ export async function addEvent(formData: FormData) {
     } catch (error: any) {
         return { success: false, message: error.message };
     }
-}
+};

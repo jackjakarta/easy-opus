@@ -30,3 +30,14 @@ export async function dbAddNewEvent(name: string, date: Date, description: strin
 
     return { name };
 };
+
+
+export async function dbDeleteEvent(eventId: number): Promise<{ success: boolean }> {
+    const event = await db.delete(events).where(eq(events.id, eventId));
+
+    if (event.count === 0) {
+        throw new Error('No event with such id!')
+    };
+
+    return { success: true };
+};

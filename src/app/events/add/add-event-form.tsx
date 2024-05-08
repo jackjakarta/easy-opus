@@ -41,4 +41,4 @@ export default function EventForm() {
       <button type="submit">Add Event</button>
     </form>
   );
-}
+};

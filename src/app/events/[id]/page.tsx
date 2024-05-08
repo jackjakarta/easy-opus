@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { dbGetEventById } from "@/db/functions/eventsList";
+import { DeleteEventButton } from "./DeleteEventButton";
 
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default async function SingleEvent({ params }: { params: { id: number } }
     return (
         <div>
             <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
+            <DeleteEventButton eventId={event.id} />
         </div>
     );
 };
