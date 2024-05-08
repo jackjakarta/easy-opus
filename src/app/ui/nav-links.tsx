@@ -8,8 +8,8 @@ export function NavLinks() {
     const pathname = usePathname();
     
     return (
-        <nav>
-            <Link className={`link ${pathname === '/' ? 'active': ''} me-2`} href='/'>
+        <nav className="mt-3">
+            <Link className={`link ${pathname === '/' ? 'active': ''} ms-4 me-2`} href='/'>
                 Home
             </Link>
 
