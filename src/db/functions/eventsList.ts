@@ -19,3 +19,14 @@ export async function dbGetEventById(eventId: number): Promise<EventRow> {
 
     return event;
 };
+
+
+export async function dbAddNewEvent(name: string, date: Date, description: string) {
+    await db.insert(events).values({
+        name: name,
+        date: date,
+        description: description
+    });
+
+    return { name };
+};

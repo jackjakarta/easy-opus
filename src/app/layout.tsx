@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <NavLinks />
-        <main>{children}</main>
+        <main className="my-8 mx-auto w-full max-w-2xl">{children}</main>
       </body>
     </html>
   );

@@ -13,7 +13,7 @@ export default async function SingleEvent({ params }: { params: { id: number } }
     const event = await dbGetEventById(params.id)
     
     return (
-        <div className="mt-2">
+        <div>
             <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
         </div>
     );

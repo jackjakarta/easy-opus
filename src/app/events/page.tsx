@@ -24,11 +24,12 @@ export default async function Events() {
         <div>
             <h1 className="text-3xl font-bold font-mono mt-2">Events</h1>
             <h2 className="text-2xl mt-4 mb-2">List of events</h2>
-            <ul>
+            <ul className="mb-5">
                 {eventsQs.map((event) => (
                     <li key={event.id}> <Link href={`/events/${event.id}`}>{event.name}</Link> - {event.description}</li>
-                ))};
-            </ul>      
+                ))}
+            </ul>
+            <Link href={'events/add'}>Add New Event</Link>
         </div>
     );
 };
