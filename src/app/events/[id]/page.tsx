@@ -16,7 +16,9 @@ export default async function SingleEvent({ params }: { params: { id: number } }
     return (
         <div>
             <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
-            <DeleteEventButton eventId={event.id} />
+            <div className="flex justify-center mt-5">
+                <DeleteEventButton eventId={event.id} />
+            </div>
         </div>
     );
 };

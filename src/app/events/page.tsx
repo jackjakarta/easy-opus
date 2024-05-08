@@ -22,14 +22,16 @@ export default async function Events() {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold font-mono mt-2">Events</h1>
-            <h2 className="text-2xl mt-4 mb-2">List of events</h2>
-            <ul className="mb-5">
+            <h1 className="text-3xl font-bold mt-2">All Events</h1>
+            <h2 className="text-2xl mt-4 mb-2">List of upcoming events</h2>
+            <ul className="mt-3">
                 {eventsQs.map((event) => (
                     <li key={event.id}> <Link href={`/events/${event.id}`}>{event.name}</Link> - {event.description}</li>
                 ))}
             </ul>
-            <Link className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" href={'/events/add'}>Add New Event</Link>
+            <div className="flex justify-center mt-5">
+                <Link className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" href={'/events/add'}>Add New Event</Link>
+            </div>
         </div>
     );
 };
