@@ -49,7 +49,7 @@ export default function AddAttendeeForm({ eventId }: { eventId: number}) {
           />
         </div>
         {errorMessage && <div className="text-red-500 text-sm mt-2">{errorMessage}</div>}
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-center mt-4">
           <button
             type="submit"
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
