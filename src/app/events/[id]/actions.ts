@@ -1,6 +1,6 @@
 'use server';
 
-import { dbDeleteEvent, dbAddAttendeeToEvent } from "@/db/functions/eventsList";
+import { dbDeleteEvent, dbAddAttendeeToEvent, dbDeleteAttendee } from "@/db/functions/eventsList";
 
 export async function deleteEvent(eventId: number) {
     try {
@@ -21,5 +21,15 @@ export async function addAttendee(formData: FormData, eventId: number) {
         return { success: true };
     } catch (error: any) {
         return { success: false, message: error };
+    };
+};
+
+
+export async function deleteAttendee(attendeeId: number) {
+    try {
+        const result = await dbDeleteAttendee(attendeeId);
+        return { success: true };
+    } catch (error: any) {
+        return { success: false, error: error.message };
     };
 };

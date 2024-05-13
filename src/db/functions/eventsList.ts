@@ -63,3 +63,14 @@ export async function dbAddAttendeeToEvent(eventId: number, name: string, email:
 
     return { name };
 };
+
+
+export async function dbDeleteAttendee(attendeeId: number): Promise<{ success: boolean}> {
+    const attendee = await db.delete(attendees).where(eq(attendees.id, attendeeId));
+
+    if (attendee.count === 0) {
+        throw new Error('No event with such id!')
+    };
+
+    return { success: true };
+};
