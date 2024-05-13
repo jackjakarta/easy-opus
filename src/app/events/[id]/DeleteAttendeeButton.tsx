@@ -16,10 +16,10 @@ export const DeleteAttendeeButton: React.FC<DeleteAttendeeButtonProps> = ({ atte
         const result = await deleteAttendee(attendeeId);
 
         if (result.success) {
-            alert('Event deleted!')
+            alert('Attendee deleted!')
             router.refresh();
         } else {
-            alert('Failed to delete event.')
+            alert('Failed to delete attendee.')
         }
     };
 

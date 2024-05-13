@@ -4,6 +4,7 @@ import { DeleteEventButton } from "./DeleteEventButton";
 import { AttendeeRow } from "@/db";
 import AddAttendeeForm from "./AddAttendeeForm";
 import { DeleteAttendeeButton } from "./DeleteAttendeeButton";
+import EditEventForm from "./EditEventForm";
 
 
 export const metadata: Metadata = {
@@ -26,12 +27,16 @@ export default async function SingleEvent({ params }: { params: { id: number } }
             <h2 className="text-center mt-3">Event Attendees</h2>
             <ul className="mt-3">
                 {eventAttendees.map((attendee: AttendeeRow) => (
-                    <li key={attendee.id}> {attendee.name} - {attendee.email} - <DeleteAttendeeButton attendeeId={attendee.id} /> </li>
+                    <li key={attendee.id}> <b>{attendee.name}</b> - {attendee.email} - <DeleteAttendeeButton attendeeId={attendee.id} /> </li>
                 ))}
             </ul>
             <div className="mt-5">
                 <h2 className="text-center mt-3">Add Attendees</h2>
                 <AddAttendeeForm eventId={params.id} />
+            </div>
+            <div className="mt-5">
+                <h2 className="text-center mt-3">Test edit form</h2>
+                <EditEventForm eventId={params.id} />
             </div>
         </div>
     );
