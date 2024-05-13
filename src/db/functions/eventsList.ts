@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db, events, EventRow } from "..";
+import { db, events, attendees, EventRow, AttendeeRow } from "..";
 
 
 export async function dbGetEventsList(): Promise<EventRow[]> {
@@ -40,4 +40,26 @@ export async function dbDeleteEvent(eventId: number): Promise<{ success: boolean
     };
 
     return { success: true };
+};
+
+
+export async function dbGetAttendeesByEventId(eventId: number): Promise<AttendeeRow[]> {
+    const attendeesList = await db.select().from(attendees).where(eq(attendees.eventId, eventId));
+
+    if (attendeesList === undefined) {
+        throw new Error('No attendees!')
+    };
+
+    return attendeesList;
+};
+
+
+export async function dbAddAttendeeToEvent(eventId: number, name: string, email: string) {
+    await db.insert(attendees).values({
+        eventId: eventId,
+        name: name,
+        email: email
+    });
+
+    return { name };
 };

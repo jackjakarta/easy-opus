@@ -1,4 +1,4 @@
-import { pgTable, bigserial, text, timestamp, foreignKey } from "drizzle-orm/pg-core";
+import { pgTable, bigserial, text, timestamp, integer, foreignKey } from "drizzle-orm/pg-core";
 
 export const events = pgTable('events', {
     id: bigserial('id', { mode: 'number' }).primaryKey(),
@@ -10,3 +10,17 @@ export const events = pgTable('events', {
 
 
 export type EventRow = typeof events.$inferSelect;
+
+
+export const attendees = pgTable('attendees', {
+    id: bigserial('id', { mode: 'number' }).primaryKey(),
+    name: text('name').notNull(),
+    email: text('email').notNull(),
+    eventId: integer('event_id').references(() => events.id, {
+        // onDelete: 'CASCADE', 
+        // onUpdate: 'CASCADE'
+    }).notNull(),
+    createdAt: timestamp('created_at').notNull().defaultNow()
+});
+
+export type AttendeeRow = typeof attendees.$inferSelect;

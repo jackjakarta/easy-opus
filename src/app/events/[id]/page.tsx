@@ -1,6 +1,8 @@
 import { Metadata } from "next";
-import { dbGetEventById } from "@/db/functions/eventsList";
+import { dbGetEventById, dbGetAttendeesByEventId } from "@/db/functions/eventsList";
 import { DeleteEventButton } from "./DeleteEventButton";
+import { AttendeeRow } from "@/db";
+import AddAttendeeForm from "./AddAttendeeForm";
 
 
 export const metadata: Metadata = {
@@ -11,13 +13,24 @@ export const metadata: Metadata = {
 
 
 export default async function SingleEvent({ params }: { params: { id: number } }) {
-    const event = await dbGetEventById(params.id)
+    const event = await dbGetEventById(params.id);
+    const eventAttendees = await dbGetAttendeesByEventId(params.id);
     
     return (
         <div>
             <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
             <div className="flex justify-center mt-5">
                 <DeleteEventButton eventId={event.id} />
+            </div>
+            <h2 className="text-center mt-3">Event Attendees</h2>
+            <ul className="mt-3">
+                {eventAttendees.map((attendee: AttendeeRow) => (
+                    <li key={attendee.id}> {attendee.name} - {attendee.email} </li>
+                ))}
+            </ul>
+            <div className="mt-5">
+                <h2 className="text-center mt-3">Add Attendees</h2>
+                <AddAttendeeForm eventId={params.id} />
             </div>
         </div>
     );

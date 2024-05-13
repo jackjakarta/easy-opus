@@ -8,6 +8,20 @@
       "when": 1715094436685,
       "tag": "0000_thin_nebula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1715585538540,
+      "tag": "0001_easy_shatterstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715585609524,
+      "tag": "0002_amusing_captain_stacy",
+      "breakpoints": true
     }
   ]
 }
