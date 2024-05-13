@@ -4,7 +4,7 @@ import { DeleteEventButton } from "./DeleteEventButton";
 import { AttendeeRow } from "@/db";
 import AddAttendeeForm from "./AddAttendeeForm";
 import { DeleteAttendeeButton } from "./DeleteAttendeeButton";
-import EditEventForm from "./EditEventForm";
+import Link from "next/link";
 
 
 export const metadata: Metadata = {
@@ -17,11 +17,13 @@ export const metadata: Metadata = {
 export default async function SingleEvent({ params }: { params: { id: number } }) {
     const event = await dbGetEventById(params.id);
     const eventAttendees = await dbGetAttendeesByEventId(params.id);
+    // const router = useRouter();
     
     return (
         <div>
             <p>{event.name} - {event.date.getDate()}.{event.date.getMonth()}.{event.date.getFullYear()}</p>
             <div className="flex justify-center mt-5">
+                <Link href={`/events/${event.id}/edit`} className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" >Edit Event</Link>
                 <DeleteEventButton eventId={event.id} />
             </div>
             <h2 className="text-center mt-3">Event Attendees</h2>
@@ -32,11 +34,7 @@ export default async function SingleEvent({ params }: { params: { id: number } }
             </ul>
             <div className="mt-5">
                 <h2 className="text-center mt-3">Add Attendees</h2>
-                <AddAttendeeForm eventId={params.id} />
-            </div>
-            <div className="mt-5">
-                <h2 className="text-center mt-3">Test edit form</h2>
-                <EditEventForm eventId={params.id} />
+                <AddAttendeeForm eventId={event.id} />
             </div>
         </div>
     );

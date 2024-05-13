@@ -68,7 +68,7 @@ export default function EventForm() {
       </div>
 
       <div className="flex justify-end gap-x-4">
-        <button type="button" className="text-sm font-semibold text-gray-900">
+      <button type="button" className="text-sm font-semibold text-gray-900" onClick={() => router.push('/events')}>
           Cancel
         </button>
         <button
