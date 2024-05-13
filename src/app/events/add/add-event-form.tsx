@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { addEvent } from './actions';
+import Link from 'next/link';
 
 
 export default function EventForm() {
@@ -68,9 +69,9 @@ export default function EventForm() {
       </div>
 
       <div className="flex justify-end gap-x-4">
-        <button type="button" className="text-sm font-semibold text-gray-900">
+        <Link className="text-sm font-semibold text-gray-900" href={'/events'}>
           Cancel
-        </button>
+        </Link>
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
