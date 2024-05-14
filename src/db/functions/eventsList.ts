@@ -21,11 +21,12 @@ export async function dbGetEventById(eventId: number): Promise<EventRow> {
 };
 
 
-export async function dbAddNewEvent(name: string, date: Date, description: string) {
+export async function dbAddNewEvent(name: string, date: Date, description: string, userId: string) {
     await db.insert(events).values({
         name: name,
         date: date,
-        description: description
+        description: description,
+        userId: userId
     });
 
     return { name };

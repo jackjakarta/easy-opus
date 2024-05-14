@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { addEvent } from './actions';
 
 
-export default function EventForm() {
+export default function EventForm({ userId }: {userId: string}) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -14,7 +14,7 @@ export default function EventForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const result = await addEvent(formData);
+      const result = await addEvent(formData, userId);
       if (result.success) {
         router.push('/events');
       } else {

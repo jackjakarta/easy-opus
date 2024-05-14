@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default async function Events() {
     const { userId } = auth();
-    // const user = await currentUser();
+    const user = await currentUser();
 
     if (!userId) {
-        return <h1>You have to be logged in to see events.</h1>
+        return <h1>You have to be logged in to see your events.</h1>
     };
 
     const eventsQs = await dbGetEventsList(userId);
@@ -30,7 +30,7 @@ export default async function Events() {
 
     return (
         <div className="mx-auto max-w-4xl mt-10">
-            <h1 className="text-4xl font-bold text-gray-900">My Events</h1>
+            <h1 className="text-4xl font-bold text-gray-900">{user?.firstName} {user?.lastName}'s Events</h1>
             <h2 className="text-2xl font-semibold text-gray-700 mt-4 mb-5">List of your upcoming events</h2>
             <ul className="space-y-3">
                 {eventsQs.map((event) => (
