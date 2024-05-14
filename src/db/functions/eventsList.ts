@@ -3,8 +3,8 @@ import { eq } from "drizzle-orm";
 import { db, events, attendees, EventRow, AttendeeRow } from "..";
 
 
-export async function dbGetEventsList(): Promise<EventRow[]> {
-    const eventsList = await db.select().from(events); 
+export async function dbGetEventsList(userId: string): Promise<EventRow[]> {
+    const eventsList = await db.select().from(events).where(eq(events.userId, userId)); 
   
     return eventsList;
 };
